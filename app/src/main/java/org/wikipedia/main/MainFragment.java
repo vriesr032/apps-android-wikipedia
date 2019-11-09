@@ -137,7 +137,6 @@ public class MainFragment extends Fragment implements BackPressedHandler, FeedFr
         downloadReceiver.setCallback(downloadReceiverCallback);
         // reset the last-page-viewed timer
         Prefs.pageLastShown(0);
-        SuggestedEditsSurvey.maybeRunSurvey(requireActivity());
     }
 
     @Override public void onDestroyView() {
