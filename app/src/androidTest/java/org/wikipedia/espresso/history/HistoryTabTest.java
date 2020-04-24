@@ -187,7 +187,7 @@ public class HistoryTabTest {
             for (int i = 0; i < 3; i++) {
                 ViewInteraction colorButton = onView(
                         allOf(
-                                ViewTools.matchPosition(allOf(withId(R.id.page_list_header_text)), i),
+                                ViewTools.matchPosition(allOf(withId(R.id.section_header_text)), i),
                                 isDisplayed()));
                 colorButton.perform(setTextInTextView("Feb 5, 2017"));
             }
