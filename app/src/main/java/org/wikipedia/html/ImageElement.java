@@ -13,7 +13,6 @@ public class ImageElement {
     private static final PixelDensityDescriptor DESCRIPTOR_DEFAULT = null;
 
     @NonNull private final Map<PixelDensityDescriptor, String> srcs;
-    // todo: add support for width descriptors which require parsing sizes
 
     public ImageElement(@Nullable String src, @NonNull Map<PixelDensityDescriptor, String> srcSet) {
         @SuppressWarnings("checkstyle:hiddenfield") Map<PixelDensityDescriptor, String> srcs = new HashMap<>(srcSet);

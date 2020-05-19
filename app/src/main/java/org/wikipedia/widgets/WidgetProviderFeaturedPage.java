@@ -99,7 +99,6 @@ public class WidgetProviderFeaturedPage extends AppWidgetProvider {
                     if (response.tfa() != null) {
                         return Observable.just(response.tfa());
                     } else {
-                        // TODO: this logic can be removed if the feed API can return the featured article for all languages.
                         return ServiceFactory.get(mainPageTitle.getWikiSite()).parseTextForMainPage(mainPageTitle.getPrefixedText());
                     }
                 })

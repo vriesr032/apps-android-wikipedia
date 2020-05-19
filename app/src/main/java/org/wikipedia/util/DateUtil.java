@@ -24,8 +24,6 @@ import java.util.TimeZone;
 public final class DateUtil {
     private static Map<String, SimpleDateFormat> DATE_FORMATS = new HashMap<>();
 
-    // TODO: Switch to DateTimeFormatter when minSdk = 26.
-
     public static synchronized String iso8601DateFormat(Date date) {
         return getCachedDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ROOT, true).format(date);
     }
@@ -98,10 +96,6 @@ public final class DateUtil {
     }
 
     public static String getShortDateString(@NonNull Date date) {
-        // todo: consider allowing TWN date formats. It would be useful to have but might be
-        //       difficult for translators to write correct format specifiers without being able to
-        //       test them. We should investigate localization support in date libraries such as
-        //       Joda-Time and how TWN solves this classic problem.
         DateFormat dateFormat = android.text.format.DateFormat.getMediumDateFormat(WikipediaApp.getInstance());
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         return dateFormat.format(date);
@@ -168,7 +162,6 @@ public final class DateUtil {
             }
         } else {
             Context context = WikipediaApp.getInstance().getApplicationContext();
-            // TODO: rename this string/plurals resource:
             return daysAgo == 0 ? context.getResources().getString(R.string.view_continue_reading_card_subtitle_today)
                     : context.getResources().getQuantityString(R.plurals.view_continue_reading_card_subtitle, daysAgo, daysAgo);
         }

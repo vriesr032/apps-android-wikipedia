@@ -67,8 +67,6 @@ public class AutoFitRecyclerView extends RecyclerView {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        // https://issuetracker.google.com/issues/37034096
-        // TODO: check again in Sep 2018
         try {
             super.onLayout(changed, l, t, r, b);
         } catch (Exception e) {

@@ -327,7 +327,6 @@ public class WikipediaLanguagesFragment extends Fragment implements WikipediaLan
         }
     }
 
-    // TODO: optimize and reuse the header view holder
     private class HeaderViewHolder extends DefaultViewHolder<View> {
         HeaderViewHolder(View itemView) {
             super(itemView);
@@ -408,7 +407,6 @@ public class WikipediaLanguagesFragment extends Fragment implements WikipediaLan
         @Override
         protected void onDeleteSelected() {
             showRemoveLanguagesDialog();
-            // TODO: add snackbar for undo action?
         }
 
         @Override

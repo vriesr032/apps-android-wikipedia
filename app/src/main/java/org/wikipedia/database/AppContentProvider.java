@@ -101,11 +101,15 @@ public class AppContentProvider extends ContentProvider {
     }
 
     private void notifyChange(@NonNull Uri uri) {
-        boolean notify = uri.getBooleanQueryParameter(AppContentProviderContract.NOTIFY, true);
+        boolean notify = uri.getBooleanQueryParameter(AppContentProviderContract.NOT, true);
         if (getContentResolver() == null || !notify) {
             return;
         }
-        getContentResolver().notifyChange(uri, null);
+        try {
+            getContentResolver().notifyChange(uri, null);
+        } catch (NullPointerException e) {
+            throw new NullPointerException(e.toString());
+        }
     }
 
     @Nullable private ContentResolver getContentResolver() {

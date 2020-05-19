@@ -112,8 +112,6 @@ object JavaScriptActionHandler {
         val showMapLink = model.page!!.pageProperties.geo != null
         val editedDaysAgo = TimeUnit.MILLISECONDS.toDays(Date().time - model.page!!.pageProperties.lastModified.time)
 
-        // TODO: page-library also supports showing disambiguation ("similar pages") links and
-        // "page issues". We should be mindful that they exist, even if we don't want them for now.
         val baseURL = ServiceFactory.getRestBasePath(model.title?.wikiSite!!).trimEnd('/')
         return "pcs.c1.Footer.add({" +
                 "   platform: \"android\"," +

@@ -13,6 +13,9 @@ import androidx.annotation.Nullable;
 import org.wikipedia.util.UriUtil;
 import org.wikipedia.util.log.L;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static org.wikipedia.util.UriUtil.decodeURL;
 
 /**
@@ -21,6 +24,7 @@ import static org.wikipedia.util.UriUtil.decodeURL;
 public class LinkMovementMethodExt extends LinkMovementMethod {
     @Nullable private UrlHandler handler;
     @Nullable private UrlHandlerWithText handlerWithText;
+    private Logger logger = Logger.getAnonymousLogger();
 
     public LinkMovementMethodExt(@Nullable UrlHandler handler) {
         this.handler = handler;
@@ -45,7 +49,7 @@ public class LinkMovementMethodExt extends LinkMovementMethod {
                 try {
                     linkText = buffer.subSequence(buffer.getSpanStart(links[0]), buffer.getSpanEnd(links[0])).toString();
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    logger.log(Level.SEVERE, e.toString());
                     linkText = "";
                 }
                 L.d(linkText);

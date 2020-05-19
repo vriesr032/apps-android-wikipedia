@@ -33,13 +33,8 @@ public abstract class Column<T> {
         return type;
     }
 
-    // TODO: add ContentValues marshalling method and hide getName().
     public abstract T val(@NonNull Cursor cursor);
 
-    // TODO: it would be more convenient in more places to just return the qualified name. It's
-    //       easy to accidentally implicitly convert a Column to a String with `+ ""` and it's only
-    //       appropriate to do so when creating or altering tables which occurs less frequently than
-    //       actually using them.
     @Override
     public String toString() {
         return getName() + " " + getType();

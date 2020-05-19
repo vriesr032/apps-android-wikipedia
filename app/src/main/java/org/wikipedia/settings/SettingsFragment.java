@@ -28,9 +28,6 @@ public class SettingsFragment extends PreferenceLoaderFragment {
         super.onCreate(savedInstanceState);
 
         disposables.add(WikipediaApp.getInstance().getBus().subscribe(new EventBusConsumer()));
-
-        // TODO: Kick off a sync of reading lists, which will call back to us whether lists
-        // are enabled or not. (Not sure if this is necessary yet.)
     }
 
     @Override public void onDestroy() {

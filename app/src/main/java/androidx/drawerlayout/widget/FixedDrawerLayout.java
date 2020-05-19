@@ -25,9 +25,6 @@ public class FixedDrawerLayout extends DrawerLayout {
         }
     }
 
-    // TODO: Remove this class when Google updates the Support library.
-    // This solves an intermittent crash when using DrawerLayout.
-    // https://code.google.com/p/android/issues/detail?id=77926
     @Override
     boolean isContentView(View child) {
         if (child == null) {

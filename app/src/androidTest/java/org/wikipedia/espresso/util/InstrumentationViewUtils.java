@@ -27,8 +27,6 @@ import static org.wikipedia.espresso.util.ViewTools.whileWithMaxSteps;
 
 @SuppressWarnings("checkstyle:magicnumber")
 public final class InstrumentationViewUtils {
-    // TODO: re design the steps of tests
-
     //Make sure to call the switch from Explore tab
     public static void switchToDarkMode() {
         whileWithMaxSteps(
@@ -69,8 +67,6 @@ public final class InstrumentationViewUtils {
         whileWithMaxSteps(
                 () -> !viewIsDisplayed(R.id.fragment_feed_feed),
                 () -> waitFor(2000));
-
-        // TODO: redesign the way of entering SettingsActivity
 
         whileWithMaxSteps(
                 () -> !viewWithTextIsDisplayed("General"),

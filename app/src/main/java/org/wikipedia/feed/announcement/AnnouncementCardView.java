@@ -119,7 +119,7 @@ public class AnnouncementCardView extends DefaultFeedCardView<AnnouncementCard> 
         }
     }
 
-    public void setCallback(@NonNull Callback callback) {
+    public void setCall(@NonNull Callback callback) {
         this.callback = callback;
     }
 

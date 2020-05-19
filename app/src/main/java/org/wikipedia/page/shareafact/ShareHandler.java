@@ -23,6 +23,8 @@ import org.wikipedia.wiktionary.WiktionaryDialog;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -34,6 +36,8 @@ public class ShareHandler {
     private static final String PAYLOAD_PURPOSE_DEFINE = "define";
     private static final String PAYLOAD_PURPOSE_EDIT_HERE = "edit_here";
     private static final String PAYLOAD_TEXT_KEY = "text";
+    private Logger logger = Logger.getAnonymousLogger();
+
 
     @NonNull private final PageFragment fragment;
     @NonNull private final CommunicationBridge bridge;
@@ -153,7 +157,7 @@ public class ShareHandler {
                             L.d("Unknown purpose=" + purpose);
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    logger.log(Level.SEVERE, e.toString());
                 }
 
             });

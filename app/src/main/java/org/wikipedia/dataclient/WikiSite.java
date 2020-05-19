@@ -55,7 +55,6 @@ public class WikiSite implements Parcelable {
         }
     };
 
-    // todo: remove @SerializedName. this is now in the TypeAdapter and a "uri" case may be added
     @SerializedName("domain") @NonNull private final Uri uri;
     @NonNull private String languageCode;
 
@@ -171,7 +170,6 @@ public class WikiSite implements Parcelable {
         return languageCode;
     }
 
-    // TODO: this method doesn't have much to do with WikiSite. Move to PageTitle?
     /**
      * Create a PageTitle object from an internal link string.
      *
@@ -184,7 +182,6 @@ public class WikiSite implements Parcelable {
         return new PageTitle(UriUtil.removeInternalLinkPrefix(internalLink), this);
     }
 
-    // TODO: this method doesn't have much to do with WikiSite. Move to PageTitle?
     /**
      * Create a PageTitle object from a Uri, taking into account any fragment (section title) in the link.
      * @param uri Uri object to be turned into a PageTitle.

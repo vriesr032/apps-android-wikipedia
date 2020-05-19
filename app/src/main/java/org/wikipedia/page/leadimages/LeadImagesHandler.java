@@ -123,7 +123,7 @@ public class LeadImagesHandler {
         }
     }
 
-    private void updateCallToAction() {
+    private void updateCallToAction() throws NullPointerException{
         dispose();
         pageHeaderView.setUpCallToAction(null);
         if (!AccountUtil.isLoggedIn() || getLeadImageUrl() == null || !getLeadImageUrl().contains(Service.URL_FRAGMENT_FROM_COMMONS) || getPage() == null) {

@@ -68,7 +68,6 @@ public class MwQueryPage extends BaseModel {
     }
 
     @Nullable public List<Coordinates> coordinates() {
-        // TODO: Handle null values in lists during deserialization, perhaps with a new
         // @RequiredElements annotation and corresponding TypeAdapter
         if (coordinates != null) {
             coordinates.removeAll(Collections.singleton(null));

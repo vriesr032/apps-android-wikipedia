@@ -172,8 +172,7 @@ public class GalleryItemFragment extends Fragment {
             case R.id.menu_gallery_visit_page:
                 if (mediaInfo != null && imageTitle != null) {
                     UriUtil.visitInExternalBrowser(requireActivity(), Uri.parse(imageTitle.getUri()));
-                    // TODO: load the page within the app once it's supported.
-                    //((GalleryActivity) requireActivity()).finishWithPageResult(imageTitle);
+
                 }
                 return true;
             case R.id.menu_gallery_save:
@@ -300,7 +299,6 @@ public class GalleryItemFragment extends Fragment {
 
         updateProgressBar(true);
         ViewUtil.loadImage(imageView, url);
-        // TODO: show error if loading failed.
     }
 
     private void shareImage() {

@@ -64,8 +64,6 @@ public class CustomizeFeedTest {
                 () -> !viewIsDisplayed(R.id.fragment_feed_feed),
                 () -> waitFor(WAIT_FOR_2000));
 
-        // TODO: redesign the way of entering Configure Feed page
-
         waitFor(WAIT_FOR_500);
         ScreenshotTools.snap("CustomizeFeed1Of2" + mode);
         waitFor(WAIT_FOR_500);
@@ -125,8 +123,6 @@ public class CustomizeFeedTest {
                         isDisplayed()));
         textView.check(matches(withText("On this day")));
         waitFor(WAIT_FOR_2000);
-
-        // TODO: redesign the way of entering Configure Feed page
 
         waitFor(WAIT_FOR_2000);
         onView(withId(R.id.content_types_recycler)).perform(

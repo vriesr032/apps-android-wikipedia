@@ -64,7 +64,6 @@ public class AggregatedFeedContentClient {
         @Override
         void getCardFromResponse(@NonNull Map<String, AggregatedFeedContent> responses,
                                  @NonNull WikiSite wiki, int age, @NonNull List<Card> outCards) {
-            // todo: remove age check when news endpoint provides dated content, T139481.
             for (String appLangCode : WikipediaApp.getInstance().language().getAppLanguageCodes()) {
                 if (responses.containsKey(appLangCode)
                         && !FeedContentType.NEWS.getLangCodesDisabled().contains(appLangCode)) {

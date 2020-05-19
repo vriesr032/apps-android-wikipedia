@@ -75,7 +75,6 @@ public abstract class OkHttpWebViewClient extends WebViewClient {
         } catch (Exception e) {
 
             //------------------
-            // TODO: remove after two releases.
             if (request.getUrl().toString().contains(PCS_CSS)) {
                 final int statusCode = 200;
                 try {
@@ -136,7 +135,6 @@ public abstract class OkHttpWebViewClient extends WebViewClient {
     }
 
     private Request.Builder addHeaders(@NonNull Request.Builder builder) {
-        // TODO: Find a common way to set this header between here and RetrofitFactory.
         builder.header("Accept-Language", WikipediaApp.getInstance().getAcceptLanguage(getModel().getTitle().getWikiSite()));
         if (getModel().shouldSaveOffline()) {
             builder.header(OfflineCacheInterceptor.SAVE_HEADER, OfflineCacheInterceptor.SAVE_HEADER_SAVE);

@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -34,11 +36,12 @@ import okio.ByteString;
 
 import static org.wikipedia.dataclient.okhttp.OkHttpConnectionFactory.CACHE_DIR_NAME;
 
-// TODO: remove after two releases.
 public final class SavedPagesConversionUtil {
     private static final String LEAD_SECTION_ENDPOINT = "page/mobile-sections-lead/";
     private static final String REMAINING_SECTIONS_ENDPOINT = "page/mobile-sections-remaining/";
     private static final int MAX_ATTEMPTS = 3;
+    private static Logger logger = Logger.getAnonymousLogger();
+
 
     @SuppressLint("StaticFieldLeak")
     private static WebView WEBVIEW;
@@ -104,7 +107,7 @@ public final class SavedPagesConversionUtil {
                 }
             });
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 
@@ -172,7 +175,7 @@ public final class SavedPagesConversionUtil {
                     });
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
             postNextPage();
         }
     }
@@ -227,7 +230,7 @@ public final class SavedPagesConversionUtil {
 
             OfflineCacheInterceptor.createCacheItemFor(CURRENT_PAGE, summaryUrl, json, "application/json", date);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 

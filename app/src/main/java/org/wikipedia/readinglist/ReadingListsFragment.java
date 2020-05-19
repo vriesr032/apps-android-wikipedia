@@ -419,20 +419,20 @@ public class ReadingListsFragment extends Fragment implements
     }
 
     private class ReadingListItemHolder extends DefaultViewHolder<View> {
-        private ReadingListItemView itemView;
+        private ReadingListItemView readingView;
 
-        ReadingListItemHolder(ReadingListItemView itemView) {
-            super(itemView);
-            this.itemView = itemView;
+        ReadingListItemHolder(ReadingListItemView readingView) {
+            super(readingView);
+            this.readingView = readingView;
         }
 
         void bindItem(ReadingList readingList) {
-            itemView.setReadingList(readingList, ReadingListItemView.Description.SUMMARY);
-            itemView.setSearchQuery(currentSearchQuery);
+            readingView.setReadingList(readingList, ReadingListItemView.Description.SUMMARY);
+            readingView.setSearchQuery(currentSearchQuery);
         }
 
         public ReadingListItemView getView() {
-            return itemView;
+            return readingView;
         }
     }
 

@@ -112,7 +112,7 @@ public enum CardType implements EnumCode {
             return new AccessibilityCardView(ctx);
         }
     },
-    // TODO: refactor this item when the new Modern Event Platform is finished.
+
     ARTICLE_ANNOUNCEMENT(96) {
         @NonNull @Override public FeedCardView<?> newView(@NonNull Context ctx) {
             // This is not actually used, since this type of card will not be shown in the feed.

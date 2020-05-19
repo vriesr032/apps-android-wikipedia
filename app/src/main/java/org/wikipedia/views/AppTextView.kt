@@ -7,7 +7,6 @@ import android.view.MotionEvent
 import org.wikipedia.R
 import org.wikipedia.util.StringUtil
 
-// TODO: Document where it is desirable to use this class vs. a vanilla TextView
 open class AppTextView constructor(context: Context, attrs: AttributeSet? = null) : ConfigurableTextView(context, attrs) {
     init {
         if (attrs != null) {

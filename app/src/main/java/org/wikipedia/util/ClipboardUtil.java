@@ -11,11 +11,19 @@ public final class ClipboardUtil {
                                     @Nullable CharSequence label,
                                     @Nullable CharSequence text) {
         ClipData clip = ClipData.newPlainText(label, text);
-        getManager(context).setPrimaryClip(clip);
+        try {
+            getManager(context).setPrimaryClip(clip);
+        } catch (NullPointerException e) {
+            throw new NullPointerException(e.toString());
+        }
     }
 
     private static ClipboardManager getManager(Context context) {
-        return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        try {
+            return (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        } catch (NullPointerException e) {
+            throw new NullPointerException(e.toString());
+        }
     }
 
     private ClipboardUtil() { }

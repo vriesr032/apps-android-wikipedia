@@ -271,7 +271,7 @@ public class NotificationActivity extends BaseActivity implements NotificationIt
         long millis = Long.MAX_VALUE;
         for (Notification n : notificationList) {
 
-            // TODO: remove this condition when the time is right.
+
             if ((n.category().startsWith(Notification.CATEGORY_SYSTEM) && Prefs.notificationWelcomeEnabled())
                     || (n.category().equals(Notification.CATEGORY_EDIT_THANK) && Prefs.notificationThanksEnabled())
                     || (n.category().equals(Notification.CATEGORY_THANK_YOU_EDIT) && Prefs.notificationMilestoneEnabled())

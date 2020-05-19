@@ -27,7 +27,6 @@ public class WikiSiteTypeAdapter extends TypeAdapter<WikiSite> {
     }
 
     @Override public WikiSite read(JsonReader in) throws IOException {
-        // todo: legacy; remove in June 2018
         if (in.peek() == JsonToken.STRING) {
             return new WikiSite(Uri.parse(in.nextString()));
         }
@@ -54,7 +53,6 @@ public class WikiSiteTypeAdapter extends TypeAdapter<WikiSite> {
             throw new JsonParseException("Missing domain");
         }
 
-        // todo: legacy; remove in June 2018
         if (languageCode == null) {
             return new WikiSite(domain);
         }

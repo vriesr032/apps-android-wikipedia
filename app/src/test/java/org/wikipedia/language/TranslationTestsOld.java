@@ -49,7 +49,6 @@ public class TranslationTestsOld {
     private StringBuilder mismatches = new StringBuilder();
 
     @Test public void testAllTranslations() throws Throwable {
-        // todo: flag usage of templates {{}}.
         File[] resDirs = RES_BASE.listFiles((File pathname) -> pathname.isDirectory() && pathname.getName().startsWith("values") && !hasBadName(pathname));
         for (File dir : resDirs) {
             String lang = dir.getName().contains("-") ? dir.getName().substring(dir.getName().indexOf("-") + 1) : "en";

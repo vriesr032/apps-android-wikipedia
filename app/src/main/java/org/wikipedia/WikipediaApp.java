@@ -163,9 +163,6 @@ public class WikipediaApp extends Application {
         // See Javadocs and http://developer.android.com/tools/support-library/index.html#rev23-4-0
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        // This handler will catch exceptions thrown from Observables after they are disposed,
-        // or from Observables that are (deliberately or not) missing an onError handler.
-        // TODO: consider more comprehensive handling of these errors.
         RxJavaPlugins.setErrorHandler(Functions.emptyConsumer());
 
         bus = new RxBus();
@@ -234,7 +231,6 @@ public class WikipediaApp extends Application {
      * You should use PageTitle.getWikiSite() to get the article wiki
      */
     @NonNull public synchronized WikiSite getWikiSite() {
-        // TODO: why don't we ensure that the app language hasn't changed here instead of the client?
         if (wiki == null) {
             String lang = Prefs.getMediaWikiBaseUriSupportsLangCode() ? getAppOrSystemLanguageCode() : "";
             WikiSite newWiki = WikiSite.forLanguageCode(lang);

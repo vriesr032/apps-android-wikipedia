@@ -60,11 +60,7 @@ public class PageScrollerView extends AppCompatImageView {
                         if (callback != null) {
                             callback.onClick();
                         }
-                        // TODO: enable if we want the swipe-out action.
-                        //} else if (Math.abs(event.getRawX() - startX) > SLIDE_OUT_SLOP_WIDTH) {
-                        //    if (callback != null) {
-                        //        callback.onSwipeOut();
-                        //    }
+
                     } else if (callback != null) {
                         callback.onScrollStop();
                     }

@@ -34,11 +34,6 @@ import static org.wikipedia.json.GsonUnmarshaller.unmarshal;
     }
 
     @Test public void testReadOldData() {
-        // Prior to 3210ce44, we marshaled Namespace as the name string of the enum, instead of
-        // the code number, and when we switched to using the code number, we didn't introduce
-        // backwards-compatible checks for the old-style strings that may still be present in
-        // some local serialized data.
-        // TODO: remove after April 2017?
         String marshaledStr = namespace == null ? "null" : "\"" + namespace.name() + "\"";
         Namespace ns = unmarshal(Namespace.class, marshaledStr);
         assertThat(ns, is(namespace));

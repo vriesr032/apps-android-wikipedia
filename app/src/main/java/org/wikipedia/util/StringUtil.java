@@ -206,13 +206,12 @@ public final class StringUtil {
             pos = parentText.indexOf(words[words.length - 1]);
         }
         if (pos >= 0) {
-            // TODO: Programmatic selection doesn't seem to work with RTL content...
             editText.setSelection(pos, pos + words[words.length - 1].length());
             editText.performLongClick();
         }
     }
 
-    public static void boldenKeywordText(@NonNull TextView textView, @NonNull String parentText, @Nullable String searchQuery) {
+    public static void boldenKeywordText(@NonNull TextView textView, @NonNull String parentText, @Nullable String searchQuery) throws NullPointerException {
         int startIndex = indexOf(parentText, searchQuery);
         if (startIndex >= 0) {
             parentText = parentText.substring(0, startIndex)
@@ -227,7 +226,7 @@ public final class StringUtil {
     }
 
     // case insensitive indexOf, also more lenient with similar chars, like chars with accents
-    private static int indexOf(@NonNull String original, @Nullable String search) {
+    private static int indexOf(@NonNull String original, @Nullable String search) throws NullPointerException {
         if (!TextUtils.isEmpty(search)) {
             Collator collator = Collator.getInstance();
             collator.setStrength(Collator.PRIMARY);

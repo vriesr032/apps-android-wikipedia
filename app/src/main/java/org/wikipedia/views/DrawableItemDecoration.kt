@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import org.wikipedia.util.ResourceUtil
 
-// todo: replace with DividerItemDecoration once it supports headers and footers
 class DrawableItemDecoration @JvmOverloads constructor(context: Context, @AttrRes id: Int,
                                                        private val drawStart: Boolean = true,
                                                        private val drawEnd: Boolean = true,

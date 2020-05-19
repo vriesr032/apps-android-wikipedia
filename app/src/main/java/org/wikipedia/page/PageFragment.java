@@ -378,7 +378,6 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
         tocHandler = new ToCHandler(this, requireActivity().getWindow().getDecorView().findViewById(R.id.navigation_drawer),
                 requireActivity().getWindow().getDecorView().findViewById(R.id.page_scroller_button), bridge);
 
-        // TODO: initialize View references in onCreateView().
         leadImagesHandler = new LeadImagesHandler(this, webView, pageHeaderView);
 
         shareHandler = new ShareHandler(this, bridge);
@@ -498,11 +497,6 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
             return;
         }
 
-        // If it's a Special page, launch it in an external browser, since mobileview
-        // doesn't support the Special namespace.
-        // TODO: remove when Special pages are properly returned by the server
-        // If this is a Talk page also show in external browser since we don't handle those pages
-        // in the app very well at this time.
         if (title.isSpecial() || title.isTalkPage()) {
             visitInExternalBrowser(requireActivity(), Uri.parse(title.getUri()));
             return;
@@ -1096,12 +1090,9 @@ public class PageFragment extends Fragment implements BackPressedHandler, Commun
             } else if ("coordinate".equals(itemType) && model.getPage() != null && model.getPage().getPageProperties().getGeo() != null) {
                 GeoUtil.sendGeoIntent(requireActivity(), model.getPage().getPageProperties().getGeo(), model.getPage().getDisplayTitle());
             } else if ("disambiguation".equals(itemType)) {
-                // TODO
-                // messagePayload contains an array of URLs called "payload".
             }
         });
         bridge.addListener("read_more_titles_retrieved", (String messageType, JsonObject messagePayload) -> {
-            // TODO: do something with this.
         });
         bridge.addListener("view_license", (String messageType, JsonObject messagePayload) -> {
             visitInExternalBrowser(requireContext(), Uri.parse(getString(R.string.cc_by_sa_3_url)));

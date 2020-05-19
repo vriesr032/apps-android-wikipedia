@@ -34,7 +34,6 @@ abstract class Funnel {
     private final int sampleRate;
     private final String sampleRateRemoteParamName;
     private final WikipediaApp app;
-    // todo: remove @SerializedName if not pickled
     @SerializedName("site") @Nullable private final WikiSite wiki;
 
     private final String sessionToken = UUID.randomUUID().toString();

@@ -98,9 +98,9 @@ public class OfflineCacheInterceptor implements Interceptor {
 
         String contentType = "*/*";
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(metadataFile)))) {
-            reader.readLine(); // url
-            reader.readLine(); // method
-            reader.readLine(); // protocol
+            String rUrl = reader.readLine(); // url
+            String rMethod = reader.readLine(); // method
+            String rProtocol = reader.readLine(); // protocol
             builder.code(Integer.parseInt(reader.readLine()));
             String message = reader.readLine();
             builder.message(TextUtils.isEmpty(message) ? "OK" : message);
@@ -307,7 +307,6 @@ public class OfflineCacheInterceptor implements Interceptor {
         }
     }
 
-    // TODO: Remove after 2 releases
     public static void createCacheItemFor(ReadingListPage page, String url, String contents, String mimeType, String dateModified) {
         String cachePath = WikipediaApp.getInstance().getFilesDir().getAbsolutePath()
                 + File.separator + OfflineObjectDbHelper.OFFLINE_PATH;

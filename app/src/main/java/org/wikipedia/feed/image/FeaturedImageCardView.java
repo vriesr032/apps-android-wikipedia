@@ -43,7 +43,6 @@ public class FeaturedImageCardView extends DefaultFeedCardView<FeaturedImageCard
 
     @Override public void setCard(@NonNull FeaturedImageCard card) {
         super.setCard(card);
-        // TODO: superimpose text onto image thumb
         image(card.image());
         description(defaultString(card.description()));  //Can check language before doing this if we want
         header(card);

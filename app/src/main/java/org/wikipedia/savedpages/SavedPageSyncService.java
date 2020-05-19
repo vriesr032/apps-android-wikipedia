@@ -38,6 +38,8 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import io.reactivex.Completable;
 import io.reactivex.Observable;
@@ -58,6 +60,7 @@ public class SavedPageSyncService extends JobIntentService {
     public static final int SUMMARY_PROGRESS = 10;
     public static final int MOBILE_HTML_SECTION_PROGRESS = 20;
     public static final int MEDIA_LIST_PROGRESS = 30;
+    private Logger logger = Logger.getAnonymousLogger();
 
     private static Runnable ENQUEUE_RUNNABLE = () -> enqueueWork(WikipediaApp.getInstance(),
             SavedPageSyncService.class, JOB_ID, new Intent(WikipediaApp.getInstance(), SavedPageSyncService.class));
@@ -170,12 +173,10 @@ public class SavedPageSyncService extends JobIntentService {
                 totalSize = savePageFor(page);
                 success = true;
 
-            } catch (InterruptedException e) {
-                // fall through
             } catch (Exception e) {
                 // This can be an IOException from the storage media, or several types
                 // of network exceptions from malformed URLs, timeouts, etc.
-                e.printStackTrace();
+                logger.log(Level.SEVERE, e.toString());
 
                 // If we're offline, or if there's a transient network error, then don't do
                 // anything.  Otherwise...

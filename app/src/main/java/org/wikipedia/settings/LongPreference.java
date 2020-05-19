@@ -26,12 +26,12 @@ public class LongPreference extends EditTextAutoSummarizePreference {
 
     public LongPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs, defStyleAttr, DEFAULT_STYLE);
+        inits(attrs, defStyleAttr, DEFAULT_STYLE);
     }
 
     public LongPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init(attrs, defStyleAttr, defStyleRes);
+        inits(attrs, defStyleAttr, defStyleRes);
     }
 
     public int getRadix() {
@@ -87,7 +87,7 @@ public class LongPreference extends EditTextAutoSummarizePreference {
         return String.format(getSummaryFormat(), value);
     }
 
-    private void setAttributes(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    private void setAttribute(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         TypedArray array = getContext().obtainStyledAttributes(attrs, DEFAULT_STYLEABLE,
                 defStyleAttr, defStyleRes);
         radix = array.getInteger(R.styleable.LongPreference_radix, DEFAULT_RADIX);
@@ -96,8 +96,8 @@ public class LongPreference extends EditTextAutoSummarizePreference {
         array.recycle();
     }
 
-    private void init(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        setAttributes(attrs, defStyleAttr, defStyleRes);
+    private void inits(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        setAttribute(attrs, defStyleAttr, defStyleRes);
     }
 
     private <T extends CharSequence> T defaultIfEmpty(T value, T defaultValue) {

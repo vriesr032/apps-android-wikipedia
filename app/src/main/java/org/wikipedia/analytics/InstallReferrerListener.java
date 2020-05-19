@@ -16,6 +16,9 @@ import org.wikipedia.settings.Prefs;
 import org.wikipedia.util.ShareUtil;
 import org.wikipedia.util.log.L;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * To test the Google Play Install Referrer functionality:
  *
@@ -31,6 +34,7 @@ import org.wikipedia.util.log.L;
 public class InstallReferrerListener implements InstallReferrerStateListener {
     private static InstallReferrerListener INSTANCE;
     private InstallReferrerClient referrerClient;
+    private Logger logger = Logger.getAnonymousLogger();
 
     public static void newInstance(@NonNull Context context) {
         int attempts = Prefs.getInstallReferrerAttempts();
@@ -107,7 +111,7 @@ public class InstallReferrerListener implements InstallReferrerStateListener {
         try {
             referrerStr = referrerClient.getInstallReferrer().getInstallReferrer();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
             return;
         }
 

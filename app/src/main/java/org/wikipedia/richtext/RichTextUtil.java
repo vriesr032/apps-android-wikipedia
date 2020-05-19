@@ -66,7 +66,6 @@ public final class RichTextUtil {
     @NonNull public static List<Object> getComposingSpans(@NonNull Spanned spanned,
                                                           int start,
                                                           int end) {
-        // TODO: replace with Apache CollectionUtils.filter().
         List<Object> ret = new ArrayList<>();
         for (Object span : getSpans(spanned, start, end)) {
             if (isComposingSpan(spanned, span)) {

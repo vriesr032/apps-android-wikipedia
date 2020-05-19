@@ -91,19 +91,19 @@ public abstract class StaticCardView<T extends Card> extends DefaultFeedCardView
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_feed_card_dismiss:
-                    if (getCallback() != null & getCard() != null) {
+                    if (getCallback() != null && getCard() != null) {
                         return getCallback().onRequestDismissCard(getCard());
                     }
                     return false;
 
                 case R.id.menu_feed_card_edit_card_languages:
-                    if (getCallback() != null & getCard() != null) {
+                    if (getCallback() != null && getCard() != null) {
                         getCallback().onRequestEditCardLanguages(getCard());
                     }
                     return true;
 
                 case R.id.menu_feed_card_customize:
-                    if (getCallback() != null & getCard() != null) {
+                    if (getCallback() != null && getCard() != null) {
                         getCallback().onRequestCustomize(getCard());
                     }
                     return true;

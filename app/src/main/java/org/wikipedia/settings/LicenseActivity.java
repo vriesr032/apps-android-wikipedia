@@ -9,6 +9,8 @@ import org.wikipedia.util.ResourceUtil;
 import org.wikipedia.util.StringUtil;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static org.wikipedia.util.FileUtil.readFile;
 
@@ -16,6 +18,8 @@ import static org.wikipedia.util.FileUtil.readFile;
  * Displays license text of the libraries we use.
  */
 public class LicenseActivity extends BaseActivity {
+    private Logger logger = Logger.getAnonymousLogger();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,7 @@ public class LicenseActivity extends BaseActivity {
             final String text = readFile(getAssets().open(path.substring(assetPathStart)));
             textView.setText(StringUtil.fromHtml(text.replace("\n\n", "<br/><br/>")));
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, e.toString());
         }
     }
 }

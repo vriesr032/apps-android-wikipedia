@@ -22,14 +22,13 @@ import org.wikipedia.util.UriUtil
 
 class AnnouncementDialog internal constructor(context: Context, val announcement: Announcement) : AlertDialog(context), AnnouncementCardView.Callback {
 
-    // TODO: refactor this item when the new Modern Event Platform is finished.
     private val funnel: FeedFunnel = FeedFunnel(WikipediaApp.getInstance())
 
     init {
         val scrollView = ScrollView(context)
         val cardView = AnnouncementCardView(context)
         cardView.setCard(AnnouncementCard(announcement))
-        cardView.setCallback(this)
+        cardView.setCall(this)
         scrollView.addView(cardView)
         scrollView.isVerticalScrollBarEnabled = true
         setView(scrollView)
