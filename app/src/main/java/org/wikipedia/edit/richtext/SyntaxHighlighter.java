@@ -66,9 +66,6 @@ public class SyntaxHighlighter {
                                 syntaxHighlightListener.syntaxHighlightResults(result);
                             }
 
-                            // TODO: probably possible to make this more efficient...
-                            // Right now, on longer articles, this is quite heavy on the UI thread.
-                            // remove any of our custom spans from the previous cycle...
                             long time = System.currentTimeMillis();
                             Object[] prevSpans = textBox.getText().getSpans(0, textBox.getText().length(), SpanExtents.class);
                             for (Object sp : prevSpans) {
@@ -114,40 +111,6 @@ public class SyntaxHighlighter {
         syntaxRules.add(new SyntaxRule("'''''", "'''''", SyntaxRuleStyle.BOLD_ITALIC));
         syntaxRules.add(new SyntaxRule("'''", "'''", SyntaxRuleStyle.BOLD));
         syntaxRules.add(new SyntaxRule("''", "''", SyntaxRuleStyle.ITALIC));
-
-        // TODO: reevaluate colors/styles for other syntax elements.
-
-        /*
-        // section level 4:
-        syntaxRules.add(new SyntaxRule("====", "====", new SyntaxRule.SyntaxRuleStyle() {
-            @Override
-            public SpanExtents createSpan(int spanStart, SyntaxRule syntaxItem) {
-                return new ColorSpanEx(parentActivity.getResources().getColor(R.color.syntax_highlight_sectiontext),
-                                                 parentActivity.getResources().getColor(R.color.syntax_highlight_sectionbgd),
-                                                 spanStart, syntaxItem);
-            }
-        }));
-
-        // section level 3:
-        syntaxRules.add(new SyntaxRule("===", "===", new SyntaxRule.SyntaxRuleStyle() {
-            @Override
-            public SpanExtents createSpan(int spanStart, SyntaxRule syntaxItem) {
-                return new ColorSpanEx(parentActivity.getResources().getColor(R.color.syntax_highlight_sectiontext),
-                                                 parentActivity.getResources().getColor(R.color.syntax_highlight_sectionbgd),
-                                                 spanStart, syntaxItem);
-            }
-        }));
-
-        // section level 2:
-        syntaxRules.add(new SyntaxRule("==", "==", new SyntaxRule.SyntaxRuleStyle() {
-            @Override
-            public SpanExtents createSpan(int spanStart, SyntaxRule syntaxItem) {
-                return new ColorSpanEx(parentActivity.getResources().getColor(R.color.syntax_highlight_sectiontext),
-                                                 parentActivity.getResources().getColor(R.color.syntax_highlight_sectionbgd),
-                                                 spanStart, syntaxItem);
-            }
-        }));
-        */
 
         handler = new Handler(Looper.getMainLooper());
 

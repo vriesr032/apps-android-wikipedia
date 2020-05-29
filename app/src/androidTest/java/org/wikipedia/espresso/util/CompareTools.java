@@ -37,7 +37,6 @@ public final class CompareTools {
         Bitmap referenceBitmap = BitmapFactory.decodeStream(referenceInputStream);
 
         float compareResult = compareTwoBitmaps(fileName, sourceBitmap, referenceBitmap);
-        // TODO: Create a formal tests result instead of output a log
         L.d("Comparison of screenshot \"" + fileName + "\": " + compareResult + "% difference.");
 
         return compareResult;
@@ -91,7 +90,6 @@ public final class CompareTools {
         Bitmap resultBitmap = Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
         resultBitmap.copyPixelsFromBuffer(resultBuffer);
 
-        // TODO: Open it if we decide to use the files in a report. (e.g.: HTML report)
         if (diffPixels > 0) {
             ScreenshotTools.saveImageIntoDisk(TEST_COMPARISON_OUTPUT_FOLDER, comparisonDifferenceFileName, resultBitmap);
         }

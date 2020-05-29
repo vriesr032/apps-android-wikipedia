@@ -71,7 +71,6 @@ public class DatabaseClient<T> {
         }
     }
 
-    // TODO: migrate old tables to use unique constraints and just call insertWithOnConflict.
     public void upsert(@NonNull T obj, @NonNull String[] selectionArgs) {
         try {
             int rowsUpdated = client.update(
@@ -81,7 +80,6 @@ public class DatabaseClient<T> {
                     getPrimaryKeySelectionArgs(obj)
             );
             if (rowsUpdated == 0) {
-                // TODO: synchronize with other writes. There are two operations performed.
                 persist(obj);
             }
         } catch (RemoteException e) {

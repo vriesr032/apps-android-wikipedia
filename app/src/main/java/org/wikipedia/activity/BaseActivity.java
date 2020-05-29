@@ -142,9 +142,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public void applyOverrideConfiguration(Configuration configuration) {
-        // TODO: remove when this is fixed:
-        // https://issuetracker.google.com/issues/141132133
-        // On Lollipop the current version of AndroidX causes a crash when instantiating a WebView.
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
                 && getResources().getConfiguration().uiMode == WikipediaApp.getInstance().getResources().getConfiguration().uiMode) {
             return;

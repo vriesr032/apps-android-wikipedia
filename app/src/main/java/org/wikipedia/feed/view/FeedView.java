@@ -56,10 +56,7 @@ public class FeedView extends AutoFitRecyclerView {
 
     private class RecyclerViewColumnCallback implements AutoFitRecyclerView.Callback {
         @Override public void onColumns(int columns) {
-            // todo: when there is only one element, should we setSpanCount to 1? e.g.:
-            //       adapter.getItemCount() <= 1 ? 1 : columns;
-            //       we would need to also notify the layout manager when the data set changes
-            //       though.
+
             recyclerLayoutManager.setSpanCount(columns);
             int padding = roundedDpToPx(getDimension(R.dimen.view_list_card_margin_horizontal));
             setPadding(padding, 0, padding, 0);

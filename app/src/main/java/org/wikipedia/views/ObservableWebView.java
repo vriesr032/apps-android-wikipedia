@@ -176,6 +176,7 @@ public class ObservableWebView extends WebView {
                     }
                 }
                 drawEventsWhileSwiping = 0;
+                break;
             case MotionEvent.ACTION_CANCEL:
                 for (OnUpOrCancelMotionEventListener listener : onUpOrCancelMotionEventListeners) {
                     listener.onUpOrCancelMotionEvent();

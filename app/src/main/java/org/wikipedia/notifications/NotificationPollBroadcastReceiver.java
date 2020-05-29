@@ -181,7 +181,6 @@ public class NotificationPollBroadcastReceiver extends BroadcastReceiver {
             NotificationPresenter.showMultipleUnread(context, notificationsToDisplay.size());
         } else {
             for (final Notification n : notificationsToDisplay) {
-                // TODO: remove these conditions when the time is right.
                 if ((n.category().startsWith(Notification.CATEGORY_SYSTEM) && Prefs.notificationWelcomeEnabled())
                         || (n.category().equals(Notification.CATEGORY_EDIT_THANK) && Prefs.notificationThanksEnabled())
                         || (n.category().equals(Notification.CATEGORY_THANK_YOU_EDIT) && Prefs.notificationMilestoneEnabled())

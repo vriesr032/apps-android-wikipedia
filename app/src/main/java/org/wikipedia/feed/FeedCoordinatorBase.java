@@ -210,8 +210,11 @@ public abstract class FeedCoordinatorBase {
     private void removeAccessibilityCard() {
         if (getLastCard() instanceof AccessibilityCard) {
             removeCard(getLastCard(), cards.indexOf(getLastCard()));
-            getLastCard().onDismiss();
-            // TODO: possible on optimization if automatically scroll up to the next card.
+            try {
+                getLastCard().onDismiss();
+            } catch (NullPointerException e) {
+                throw new NullPointerException(e.toString());
+            }
         }
     }
 

@@ -190,7 +190,6 @@ public class LangLinksActivity extends BaseActivity {
 
     private void displayLangLinks() {
         if (languageEntries.size() == 0) {
-            // TODO: Question: should we use the same empty view for the default empty view and search result empty view?
             langLinksEmpty.setEmptyText(R.string.langlinks_empty);
             ViewAnimations.crossFade(langLinksProgress, langLinksEmpty);
         } else {
@@ -243,8 +242,6 @@ public class LangLinksActivity extends BaseActivity {
             String languageCode = link.getWikiSite().languageCode();
 
             if (AppLanguageLookUpTable.BELARUSIAN_LEGACY_LANGUAGE_CODE.equals(languageCode)) {
-                // Replace legacy name of тарашкевіца language with the correct name.
-                // TODO: Can probably be removed when T111853 is resolved.
                 it.remove();
                 it.add(new PageTitle(link.getText(), WikiSite.forLanguageCode(AppLanguageLookUpTable.BELARUSIAN_TARASK_LANGUAGE_CODE)));
             } else if (AppLanguageLookUpTable.CHINESE_LANGUAGE_CODE.equals(languageCode)) {
@@ -282,7 +279,6 @@ public class LangLinksActivity extends BaseActivity {
     public static void addChineseEntriesIfNeeded(@NonNull PageTitle title,
                                                  @NonNull List<PageTitle> languageEntries) {
 
-        // TODO: setup PageTitle in correct variant
         if (title.getWikiSite().languageCode().startsWith(AppLanguageLookUpTable.CHINESE_LANGUAGE_CODE)) {
             String[] chineseLanguageCodes = {AppLanguageLookUpTable.SIMPLIFIED_CHINESE_LANGUAGE_CODE, AppLanguageLookUpTable.TRADITIONAL_CHINESE_LANGUAGE_CODE};
 
@@ -400,7 +396,6 @@ public class LangLinksActivity extends BaseActivity {
         }
 
         void bindItem(int position) {
-            // TODO: Optimize this
             sectionHeaderTextView.setText(languageEntries.get(position).getDisplayText());
         }
     }
@@ -435,7 +430,6 @@ public class LangLinksActivity extends BaseActivity {
                         || languageCode.equals(app.language().getSystemLanguageCode())) {
                     nonLocalizedLanguageNameTextView.setVisibility(View.GONE);
                 } else {
-                    // TODO: Fix an issue when app language is zh-hant, the subtitle in zh-hans will display in English
                     nonLocalizedLanguageNameTextView.setText(canonicalName);
                     nonLocalizedLanguageNameTextView.setVisibility(View.VISIBLE);
                 }

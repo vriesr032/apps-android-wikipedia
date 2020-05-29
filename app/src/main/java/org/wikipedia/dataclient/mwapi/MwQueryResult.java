@@ -135,7 +135,6 @@ public class MwQueryResult extends BaseModel implements PostProcessingTypeAdapte
         }
         for (MwQueryPage page : pages) {
             for (MwQueryResult.Redirect redirect : redirects) {
-                // TODO: Looks like result pages and redirects can also be matched on the "index"
                 // property.  Confirm in the API docs and consider updating.
                 if (page.title().equals(redirect.to())) {
                     page.redirectFrom(redirect.from());

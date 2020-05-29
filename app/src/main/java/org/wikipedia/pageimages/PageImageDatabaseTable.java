@@ -12,8 +12,6 @@ import org.wikipedia.database.contract.PageImageHistoryContract.Col;
 import org.wikipedia.dataclient.WikiSite;
 import org.wikipedia.page.PageTitle;
 
-
-// todo: network caching preserves images. Remove this class and drop table?
 public class PageImageDatabaseTable extends DatabaseTable<PageImage> {
     private static final int DB_VER_NAMESPACE_ADDED = 7;
     private static final int DB_VER_LANG_ADDED = 10;

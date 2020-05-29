@@ -323,7 +323,6 @@ public class ReadingListSyncAdapter extends AbstractThreadedSyncAdapter {
                     L.d("Fetching all pages in remote list " + remoteList.name());
                     List<RemoteReadingListEntry> remoteEntries = client.getListEntries(remoteList.id());
                     for (RemoteReadingListEntry remoteEntry : remoteEntries) {
-                        // TODO: optimization opportunity -- create/update local pages in bulk.
                         createOrUpdatePage(localList, remoteEntry);
                     }
                     shouldSendSyncEvent = true;
@@ -380,7 +379,6 @@ public class ReadingListSyncAdapter extends AbstractThreadedSyncAdapter {
                 L.d("Deleting remote page id " + id);
                 String[] listAndPageId = id.split(":");
                 try {
-                    // TODO: optimization opportunity once server starts supporting batch deletes.
                     client.deletePageFromList(getCsrfToken(wiki, csrfToken), Long.parseLong(listAndPageId[0]), Long.parseLong(listAndPageId[1]));
                 } catch (Throwable t) {
                     L.w(t);
@@ -452,17 +450,10 @@ public class ReadingListSyncAdapter extends AbstractThreadedSyncAdapter {
                         ReadingListDbHelper.instance().updatePages(localPages);
                     }
                 } catch (Throwable t) {
-                    // TODO: optimization opportunity -- if the server can return the ID
-                    // of the existing page(s), then we wouldn't need to do a hard sync.
-
-                    // If the page already exists in the remote list, this means that
-                    // the contents of this list have diverged from the remote list,
-                    // so let's force a full sync.
                     if (client.isErrorType(t, "duplicate-page")) {
                         shouldRetryWithForce = true;
                         break;
                     } else if (client.isErrorType(t, "entry-limit")) {
-                        // TODO: handle more meaningfully than ignoring, for now.
                     } else if (client.isErrorType(t, "no-such-project")) {
                         // Something is malformed in the page domain, but we don't know which page
                         // in the batch caused the error. Therefore, let's retry uploading the pages
@@ -484,7 +475,6 @@ public class ReadingListSyncAdapter extends AbstractThreadedSyncAdapter {
                                 shouldRetryWithForce = true;
                                 break;
                             } else if (client.isErrorType(t, "entry-limit")) {
-                                // TODO: handle more meaningfully than ignoring, for now.
                             } else if (client.isErrorType(t, "no-such-project")) {
                                 // Ignore the error, and give this malformed page a bogus remoteID,
                                 // so that we won't try syncing it again.

@@ -103,7 +103,6 @@ public class ImageInfo implements Serializable {
         if (derivatives == null || derivatives.size() == 0) {
             return null;
         }
-        // TODO: make this smarter.
         return derivatives.get(derivatives.size() - 1);
     }
 

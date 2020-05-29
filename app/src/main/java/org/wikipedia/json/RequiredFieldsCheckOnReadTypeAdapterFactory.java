@@ -19,16 +19,6 @@ import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Set;
 
-/**
- * TypeAdapterFactory that provides TypeAdapters that return null values for objects that are
- * missing fields annotated with @Required.
- *
- * BEWARE: This means that a List or other Collection of objects that have @Required fields can
- * contain null elements after deserialization!
- *
- * TODO: Handle null values in lists during deserialization, perhaps with a new @RequiredElements
- * annotation and another corresponding TypeAdapter(Factory).
- */
 class RequiredFieldsCheckOnReadTypeAdapterFactory implements TypeAdapterFactory {
     @Nullable @Override public final <T> TypeAdapter<T> create(@NonNull Gson gson, @NonNull TypeToken<T> typeToken) {
         Class<?> rawType = typeToken.getRawType();

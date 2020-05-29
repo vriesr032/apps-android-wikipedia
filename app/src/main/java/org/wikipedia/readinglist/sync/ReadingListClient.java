@@ -202,7 +202,6 @@ public class ReadingListClient {
                 }
             } catch (Throwable t) {
                 if (isErrorType(t, "entry-limit")) {
-                    // TODO: handle more meaningfully than ignoring, for now.
                     break;
                 }
                 throw t;

@@ -130,7 +130,6 @@ public abstract class OnboardingFragment extends Fragment implements BackPressed
         @Override public void onPageSelected(int position) {
             updateButtonState();
             updatePageIndicatorContentDescription();
-            // TODO: request focus to child view to make it readable after switched page.
         }
     }
 }

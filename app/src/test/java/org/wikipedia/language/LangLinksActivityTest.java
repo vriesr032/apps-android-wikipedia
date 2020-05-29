@@ -55,14 +55,14 @@ public class LangLinksActivityTest{
     private List<PageTitle> getBaseLanguageEntriesWithZhVariants() {
         List<PageTitle> result = getBaseLanguageEntries();
         result.add(new PageTitle("洋基体育场 (1923年)", WikiSite.forLanguageCode("zh-hans")));
-        result.add(new PageTitle("洋基体育场 (1923年)", WikiSite.forLanguageCode("zh-hant"))); // TODO: change to correct variant, an API issue
+        result.add(new PageTitle("洋基体育场 (1923年)", WikiSite.forLanguageCode("zh-hant")));
         return result;
     }
 
     private List<PageTitle> getExpectedGeneralResults() {
         List<PageTitle> result = getBaseLanguageEntries();
         result.add(new PageTitle("洋基体育场 (1923年)", WikiSite.forLanguageCode("zh-hans")));
-        result.add(new PageTitle("洋基体育场 (1923年)", WikiSite.forLanguageCode("zh-hant"))); // TODO: change to correct variant, an API issue
+        result.add(new PageTitle("洋基体育场 (1923年)", WikiSite.forLanguageCode("zh-hant")));
         return result;
     }
 

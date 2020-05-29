@@ -334,10 +334,6 @@ public class EditSectionActivity extends BaseActivity {
             }
             if (result instanceof EditSuccessResult) {
                 funnel.logSaved(((EditSuccessResult) result).getRevID());
-                // TODO: remove the artificial delay and use the new revision
-                // ID returned to request the updated version of the page once
-                // revision support for mobile-sections is added to RESTBase
-                // See https://github.com/wikimedia/restbase/pull/729
                 new Handler().postDelayed(successRunnable, TimeUnit.SECONDS.toMillis(2));
                 return;
             }

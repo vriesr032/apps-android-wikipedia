@@ -191,7 +191,11 @@ public final class ShareUtil {
         }
         for (ResolveInfo intentActivity : context.getPackageManager().queryIntentActivities(queryIntent, 0)) {
             if (!isIntentActivityBlacklisted(intentActivity, APP_PACKAGE_REGEX)) {
-                intents.add(buildLabeledIntent(targetIntent, intentActivity));
+                try {
+                    intents.add(buildLabeledIntent(targetIntent, intentActivity));
+                } catch (NullPointerException e) {
+                    throw new NullPointerException(e.toString());
+                }
             }
         }
         return intents;

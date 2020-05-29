@@ -60,9 +60,6 @@ public class PageTitle implements Parcelable {
      * * [[Utilisateur:Deskana]] on frwiki will have a namespace of "Utilisateur", even if you got
      *   to the page by going to [[User:Deskana]] and having MediaWiki automatically redirect you.
      */
-    // TODO: remove. This legacy code is the localized namespace name (File, Special, Talk, etc) but
-    //       isn't consistent across titles. e.g., articles with colons, such as RTÉ News: Six One,
-    //       are broken.
     @Nullable private final String namespace;
     @NonNull private String text;
     @Nullable private final String fragment;
@@ -70,7 +67,6 @@ public class PageTitle implements Parcelable {
     @SerializedName("site") @NonNull private final WikiSite wiki;
     @Nullable private String description;
     @Nullable private final PageProperties properties;
-    // TODO: remove after the restbase endpoint supports ZH variants.
     @Nullable private String displayText;
 
     /**
@@ -87,8 +83,6 @@ public class PageTitle implements Parcelable {
         if (TextUtils.isEmpty(fragment)) {
             return new PageTitle(prefixedText, wiki, null, (PageProperties) null);
         } else {
-            // TODO: this class needs some refactoring to allow passing in a fragment
-            // without having to do string manipulations.
             return new PageTitle(prefixedText + "#" + fragment, wiki, null, (PageProperties) null);
         }
     }
@@ -102,7 +96,7 @@ public class PageTitle implements Parcelable {
         properties = null;
     }
 
-    public PageTitle(@Nullable String text, @NonNull WikiSite wiki, @Nullable String thumbUrl, @Nullable String description, @Nullable PageProperties properties) {
+    public PageTitle(@Nullable String text, @NonNull WikiSite wiki, @Nullable String thumbUrl, @Nullable String description, @Nullable PageProperties properties) throws NullPointerException {
         this(text, wiki, thumbUrl, properties);
         this.description = description;
     }
@@ -130,8 +124,7 @@ public class PageTitle implements Parcelable {
     }
 
     private PageTitle(@Nullable String text, @NonNull WikiSite wiki, @Nullable String thumbUrl,
-                      @Nullable PageProperties properties) {
-        // FIXME: Does not handle mainspace articles with a colon in the title well at all
+                      @Nullable PageProperties properties) throws NullPointerException {
         if (TextUtils.isEmpty(text)) {
             // If empty, this refers to the main page.
             text = SiteInfoClient.getMainPageForLang(wiki.languageCode());
@@ -259,8 +252,6 @@ public class PageTitle implements Parcelable {
     }
 
     public String getPrefixedText() {
-
-        // TODO: find a better way to check if the namespace is a ISO Alpha2 Code (two digits country code)
         return namespace == null ? getText() : StringUtil.addUnderscores(namespace) + ":" + getText();
     }
 

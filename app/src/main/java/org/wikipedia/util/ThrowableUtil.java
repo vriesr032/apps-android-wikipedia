@@ -20,8 +20,6 @@ import java.util.concurrent.TimeoutException;
 import javax.net.ssl.SSLException;
 
 public final class ThrowableUtil {
-
-    // TODO: replace with Apache Commons Lang ExceptionUtils.
     @NonNull
     public static Throwable getInnermostThrowable(@NonNull Throwable e) {
         Throwable t = e;
@@ -31,7 +29,6 @@ public final class ThrowableUtil {
         return t;
     }
 
-    // TODO: replace with Apache Commons Lang ExceptionUtils.
     private static boolean throwableContainsException(@NonNull Throwable e, Class<?> exClass) {
         Throwable t = e;
         while (t != null) {

@@ -410,7 +410,6 @@ class SuggestedEditsImageTagsFragment : SuggestedEditsItemFragment(), CompoundBu
                             publishing = false
                         }
                         .subscribe({ response ->
-                            // TODO: check anything else in the response?
                             publishSuccess = true
                             onSuccess()
                         }, { caught ->
@@ -471,7 +470,6 @@ class SuggestedEditsImageTagsFragment : SuggestedEditsItemFragment(), CompoundBu
     }
 
     private fun onError(caught: Throwable) {
-        // TODO: expand this a bit.
         SuggestedEditsFunnel.get().failure(ADD_IMAGE_TAGS)
         funnel?.logError(caught.localizedMessage)
         publishOverlayContainer.visibility = GONE

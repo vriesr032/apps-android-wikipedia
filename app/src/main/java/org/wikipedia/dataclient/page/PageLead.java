@@ -159,22 +159,22 @@ public class PageLead {
         private static final int MEDIUM = 640;
         private static final int LARGE = 800;
         private static final int XL = 1024;
-        @SuppressWarnings("unused") @SerializedName("320") private String small;
-        @SuppressWarnings("unused") @SerializedName("640") private String medium;
-        @SuppressWarnings("unused") @SerializedName("800") private String large;
-        @SuppressWarnings("unused") @SerializedName("1024") private String xl;
+        @SuppressWarnings("unused") @SerializedName("320") private String s;
+        @SuppressWarnings("unused") @SerializedName("640") private String m;
+        @SuppressWarnings("unused") @SerializedName("800") private String l;
+        @SuppressWarnings("unused") @SerializedName("1024") private String extral;
 
         @Nullable
         public String get(int width) {
             switch (width) {
                 case SMALL:
-                    return small;
+                    return s;
                 case MEDIUM:
-                    return medium;
+                    return m;
                 case LARGE:
-                    return large;
+                    return l;
                 case XL:
-                    return xl;
+                    return extral;
                 default:
                     return null;
             }

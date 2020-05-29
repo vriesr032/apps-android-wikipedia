@@ -68,8 +68,6 @@ public interface RestService {
     Observable<PageSummary> getSummary(@Nullable @Header("Referer") String referrerUrl,
                                        @NonNull @Path("title") String title);
 
-    // todo: this Content Service-only endpoint is under page/ but that implementation detail should
-    //       probably not be reflected here. Move to WordDefinitionClient
     /**
      * Gets selected Wiktionary content for a given title derived from user-selected text
      *

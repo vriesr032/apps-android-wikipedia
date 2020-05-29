@@ -269,7 +269,7 @@ public class LanguagesListActivity extends BaseActivity {
     }
 
     @Nullable
-    private String getCanonicalName(@NonNull String code) {
+    private String getCanonicalName(@NonNull String code) throws NullPointerException{
         String canonicalName = null;
         if (siteInfoList != null) {
             for (SiteMatrix.SiteInfo info : siteInfoList) {
@@ -285,7 +285,6 @@ public class LanguagesListActivity extends BaseActivity {
         return canonicalName;
     }
 
-    // TODO: optimize and reuse the header view holder?
     private class DefaultViewHolder extends RecyclerView.ViewHolder {
         private TextView sectionHeaderTextView;
         private List<String> languageCodes;

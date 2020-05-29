@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Two-way communications bridge between JS in a WebView and Java.
@@ -40,6 +42,7 @@ public class CommunicationBridge {
     public static final String BLANK_PAGE = "about:blank";
     private final Map<String, List<JSEventListener>> eventListeners;
     private final CommunicationBridgeListener communicationBridgeListener;
+    private Logger logger = Logger.getAnonymousLogger();
 
     private boolean isDOMReady;
     private final List<String> pendingJSMessages = new ArrayList<>();
@@ -139,14 +142,14 @@ public class CommunicationBridge {
                     listener.onMessage(message.getAction(), message.getData());
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.log(Level.SEVERE, e.toString());
                 L.logRemoteError(e);
             }
             return false;
         }
     });
 
-    private class CommunicatingChrome extends WebChromeClient {
+    private static class CommunicatingChrome extends WebChromeClient {
         @Override
         public boolean onConsoleMessage(@NonNull ConsoleMessage consoleMessage) {
             L.d(consoleMessage.sourceId() + ":" + consoleMessage.lineNumber() + " - " + consoleMessage.message());
@@ -178,7 +181,7 @@ public class CommunicationBridge {
     }
 
     @SuppressWarnings("unused")
-    private class BridgeMessage {
+    private static class BridgeMessage {
         @Nullable private String action;
         @Nullable private JsonObject data;
 

@@ -137,19 +137,19 @@ public class CardHeaderView extends ConstraintLayout {
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.menu_feed_card_dismiss:
-                    if (callback != null & card != null) {
+                    if (callback != null && card != null) {
                         return callback.onRequestDismissCard(card);
                     }
                     return false;
 
                 case R.id.menu_feed_card_edit_card_languages:
-                    if (callback != null & card != null) {
+                    if (callback != null && card != null) {
                         callback.onRequestEditCardLanguages(card);
                     }
                     return true;
 
                 case R.id.menu_feed_card_customize:
-                    if (callback != null & card != null) {
+                    if (callback != null && card != null) {
                         callback.onRequestCustomize(card);
                     }
                     return true;

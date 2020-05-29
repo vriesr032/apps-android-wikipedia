@@ -117,7 +117,6 @@ public class WiktionaryDialog extends ExtendedBottomSheetDialogFragment {
             return;
         }
 
-        // TODO: centralize the Wiktionary domain better. Maybe a SharedPreference that defaults to
         disposables.add(ServiceFactory.getRest(new WikiSite(pageTitle.getWikiSite().subdomain() + WIKTIONARY_DOMAIN)).getDefinition(addUnderscores(selectedText))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

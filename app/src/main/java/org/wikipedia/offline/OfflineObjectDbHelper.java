@@ -18,10 +18,13 @@ import org.wikipedia.util.log.L;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class OfflineObjectDbHelper {
     public static final String OFFLINE_PATH = "offline_files";
     private static OfflineObjectDbHelper INSTANCE;
+    private Logger logger = Logger.getAnonymousLogger();
 
     public static OfflineObjectDbHelper instance() {
         if (INSTANCE == null) {
@@ -54,7 +57,7 @@ public class OfflineObjectDbHelper {
                         return OfflineObjectTable.DATABASE_TABLE.fromCursor(cursor);
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    logger.log(Level.SEVERE, e.toString());
                     L.logRemoteErrorIfProd(e);
                 }
             }

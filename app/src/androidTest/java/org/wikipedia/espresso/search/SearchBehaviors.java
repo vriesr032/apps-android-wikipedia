@@ -45,8 +45,6 @@ public final class SearchBehaviors {
                         isDisplayed()));
         frameLayout.perform(click());
 
-        // TODO: correctly search for Test language.
-
         // take screenshot
         if (shouldTakeScreenshot) {
             ScreenshotTools.snap("SearchPage");

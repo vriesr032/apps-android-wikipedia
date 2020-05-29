@@ -27,9 +27,7 @@ object MissingDescriptionProvider {
     private var imagesWithTranslatableCaptionCacheToLang : String = ""
 
     private val imagesWithMissingTagsCache : Stack<MwQueryPage> = Stack()
-
-    // TODO: add a maximum-retry limit -- it's currently infinite, or until disposed.
-
+    
     fun getNextArticleWithMissingDescription(wiki: WikiSite): Observable<PageSummary> {
         return Observable.fromCallable { mutex.acquire() }.flatMap {
             var cachedTitle = ""

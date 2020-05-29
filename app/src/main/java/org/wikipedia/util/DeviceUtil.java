@@ -123,7 +123,6 @@ public final class DeviceUtil {
     }
 
     public static boolean isNavigationBarShowing() {
-        // TODO: revisit this if there's no more navigation bar by default.
         return KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK) && KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
     }
 
@@ -138,7 +137,6 @@ public final class DeviceUtil {
 
     public static boolean isAccessibilityEnabled() {
         AccessibilityManager am = (AccessibilityManager) WikipediaApp.getInstance().getSystemService(ACCESSIBILITY_SERVICE);
-        // TODO: add more logic if other accessibility tools have different settings.
         return am != null && am.isEnabled() && am.isTouchExplorationEnabled();
     }
 

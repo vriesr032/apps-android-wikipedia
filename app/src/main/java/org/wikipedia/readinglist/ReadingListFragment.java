@@ -270,7 +270,6 @@ public class ReadingListFragment extends Fragment implements ReadingListItemActi
     }
 
     @Nullable private Bundle getTransitionAnimationBundle(@NonNull PageTitle pageTitle) {
-        // TODO: add future transition animations.
         return null;
     }
 
@@ -526,7 +525,6 @@ public class ReadingListFragment extends Fragment implements ReadingListItemActi
         }
         List<ReadingList> listsContainPage = TextUtils.isEmpty(currentSearchQuery) ? Collections.singletonList(readingList) : ReadingListBehaviorsUtil.INSTANCE.getListsContainPage(page);
         ReadingListBehaviorsUtil.INSTANCE.deletePages(requireActivity(), listsContainPage, page, this::updateReadingListData, () -> {
-            // TODO: need to verify the log of delete item since this action will delete multiple items in the same time.
             funnel.logDeleteItem(readingList, 0);
             update();
         });

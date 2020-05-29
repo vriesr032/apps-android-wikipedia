@@ -222,7 +222,6 @@ public class LinkPreviewDialog extends ExtendedBottomSheetDialogFragment
                     pageTitle.setThumbUrl(summary.getThumbnailUrl());
                     revision = summary.getRevision();
                     titleText.setText(StringUtil.fromHtml(summary.getDisplayTitle()));
-                    // TODO: remove after the restbase endpoint supports ZH variants
                     pageTitle.setText(StringUtil.removeNamespace(summary.getApiTitle()));
                     showPreview(new LinkPreviewContents(summary, pageTitle.getWikiSite()));
                 }, caught -> {

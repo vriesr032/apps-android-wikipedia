@@ -328,7 +328,6 @@ public class MainFragment extends Fragment implements BackPressedHandler, FeedFr
 
     @Nullable
     public Bundle getTransitionAnimationBundle(@NonNull PageTitle pageTitle) {
-        // TODO: add future transition animations.
         return null;
     }
 

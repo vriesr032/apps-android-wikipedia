@@ -79,7 +79,6 @@ public class ReadingListPageTable extends DatabaseTable<ReadingListPage> {
             List<ReadingList> currentLists = new ArrayList<>();
             createDefaultList(db, currentLists);
             renameListsWithIdenticalNameAsDefault(db, currentLists);
-            // TODO: add other one-time conversions here.
         }
     }
 

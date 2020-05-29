@@ -52,8 +52,6 @@ public final class PageActivityTest {
         waitFor(WAIT_FOR_1000);
         ScreenshotTools.snap("PageActivityWithObama_Black");
 
-
-        //Todo: Create espresso.screenshots to show hide/show of tab layout and actionBar
         runComparisons();
     }
 

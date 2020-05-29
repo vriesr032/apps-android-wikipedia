@@ -108,7 +108,6 @@ public class LoginClient {
                     }
                     if ("UI".equals(loginResult.getStatus())) {
                         if (loginResult instanceof LoginOAuthResult) {
-                            // TODO: Find a better way to boil up the warning about 2FA
                             Toast.makeText(WikipediaApp.getInstance(),
                                     R.string.login_2fa_other_workflow_error_msg, Toast.LENGTH_LONG).show();
                             throwable = new LoginFailedException(loginResult.getMessage());
@@ -198,7 +197,6 @@ public class LoginClient {
                         }
                     }
                 } else if (!"PASS".equals(status) && !"FAIL".equals(status)) {
-                    //TODO: String resource -- Looks like needed for others in this class too
                     userMessage = "An unknown error occurred.";
                 }
                 return new LoginResult(site, status, userName, password, userMessage);

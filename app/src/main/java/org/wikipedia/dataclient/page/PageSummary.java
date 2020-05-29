@@ -61,7 +61,6 @@ public class PageSummary {
         return StringUtils.defaultString(titles != null ? titles.canonical : null);
     }
 
-    // TODO: Make this return CharSequence, and automatically convert from HTML.
     @NonNull
     public String getDisplayTitle() {
         return StringUtils.defaultString(titles != null ? titles.display : null);

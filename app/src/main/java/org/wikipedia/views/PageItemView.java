@@ -35,10 +35,6 @@ import butterknife.OnLongClick;
 
 import static org.wikipedia.util.ResourceUtil.getThemedColor;
 
-/*
- * TODO: Use this for future RecyclerView updates where we show a list of pages
- * (e.g. History, Search, Disambiguation)
- */
 public class PageItemView<T> extends ConstraintLayout {
 
     public interface Callback<T> {
