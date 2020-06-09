@@ -28,11 +28,19 @@ public final class GeoIPCookieUnmarshaller {
 
     @VisibleForTesting
     @NonNull
-    static GeoIPCookie unmarshal(@Nullable String cookie) throws IllegalArgumentException {
+    static GeoIPCookie unmarshal(@Nullable String cookie) throws IllegalArgumentException, NullPointerException {
         if (TextUtils.isEmpty(cookie)) {
             throw new IllegalArgumentException("Cookie is empty.");
         }
-        String[] components = cookie.split(":");
+
+        String[] components;
+
+        try {
+            components = cookie.split(":");
+        } catch (NullPointerException e) {
+            throw new NullPointerException(e.getLocalizedMessage());
+        }
+
         if (components.length < Component.values().length) {
             throw new IllegalArgumentException("Cookie is malformed.");
         } else if (!components[Component.VERSION.ordinal()].equals("v4")) {

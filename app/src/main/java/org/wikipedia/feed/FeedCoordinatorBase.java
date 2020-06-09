@@ -207,7 +207,7 @@ public abstract class FeedCoordinatorBase {
         appendCard(new OfflineCard());
     }
 
-    private void removeAccessibilityCard() {
+    private void removeAccessibilityCard() throws NullPointerException {
         if (getLastCard() instanceof AccessibilityCard) {
             removeCard(getLastCard(), cards.indexOf(getLastCard()));
             try {

@@ -131,7 +131,12 @@ public class PageTitle implements Parcelable {
         }
 
         // Remove any URL parameters (?...) from the title
-        String[] parts = text.split("\\?", -1);
+        String[] parts;
+        try {
+            parts = text.split("\\?", -1);
+        } catch (NullPointerException e){
+            throw new NullPointerException(e.getLocalizedMessage());
+        }
         if (parts.length > 1 && parts[1].contains("=")) {
             text = parts[0];
         }

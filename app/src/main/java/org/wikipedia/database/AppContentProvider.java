@@ -100,7 +100,7 @@ public class AppContentProvider extends ContentProvider {
         return rows;
     }
 
-    private void notifyChange(@NonNull Uri uri) {
+    private void notifyChange(@NonNull Uri uri) throws NullPointerException {
         boolean notify = uri.getBooleanQueryParameter(AppContentProviderContract.NOT, true);
         if (getContentResolver() == null || !notify) {
             return;
